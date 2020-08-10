@@ -25,16 +25,8 @@ var clickNumbers = function(evenet){
             input.array.pop();
             break;
         case '+':
-            input.array.push(' ' + str + ' ');
-            break;
         case '-':
-            input.array.push(' ' + str + ' ');
-            break;
-            
         case '*':
-            input.array.push(' ' + str + ' ');
-            break;
-
         case '/':
             input.array.push(' ' + str + ' ');
             break;
