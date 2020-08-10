@@ -1,5 +1,5 @@
 var readInput = function(){
-    var input = document.getElementById('input1');
+    var input = document.getElementById('input');
     console.log(input.value);
 }
 
