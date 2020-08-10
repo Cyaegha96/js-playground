@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+    <div>
+        <button onclick="calc()"> 실행</button>
+    </div>
+    <div id="output"> 알 이즈 웰</div>
+    <script>
+        function calc() {
+         
+            var n1 = Number(prompt("첫번째 숫자를 입력해주세요."));
+
+        var op, n2;
+        var result = n1;
+
+        var n = 2;
+
+        while(true){
+            op = prompt("연산자를 입력햇주세요.");
+             if (op === "q") {
+                break;
+
+            }
+            n2 =  Number(prompt(n+"번째 숫자를 입력해주세요."));
+
+            
+              if (op === "+") {
+               result += n2;
+               n++;
+            } else if (op === "-") {
+               result -= n2;
+             n++;
+            } else if (op === "*") {
+               result *= n2;
+            n++;
+            } else if (op === "/") {
+               result /= n2;
+                  n++;
+            } else {
+                result = "중간오류";
+                break;
+            }
+            
+        }   
+
+     var out = document.getElementById('output');
+     out.innerHTML = "최종결과값은 " + result + "입니다."
+
+
+        }
+
+    </script>
+</body>
+
+</html>
