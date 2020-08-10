@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+
+    <div id="output"> 알 이즈 웰</div>
+    <script>
+
+        var input = { count:2};
+        input.getFirstValue =  function() {
+                var n1 = Number(prompt("첫번째 숫자를 입력해주세요."));
+                return n1;
+         };
+        input.getSecondValue =  function() {
+                var num2 = Number(prompt(this.count + "번째 숫자를 입력해주세요."));
+                this.count++;
+                return num2;
+            };
+        input.getOperator = function() {
+                while (true) {
+                    var op = prompt("연산자를 입력햇주세요.");
+                    if (op === "+" || op === "-" || op === "*" || op === "/" || op === "q") {
+                        break;
+                    } else {
+                        alert("올바른 연산자를 입력해주세요");
+                    }
+                }
+                return op;
+            };
+
+
+        output = {};
+        output.print = function (result) {
+                var out = document.getElementById('output');
+                out.innerHTML = "최종결과값은 " + result + "입니다."
+
+            };;
+
+        calculator = {}
+        calculator.calculate = function(result, n2, op) {
+                if (op === "+") {
+                    result += n2;
+
+                } else if (op === "-") {
+                    result -= n2;
+
+                } else if (op === "*") {
+                    result *= n2;
+
+                } else if (op === "/") {
+                    result /= n2;
+
+                }
+                return result;
+        };
+
+        function main() {
+
+            var result = input.getFirstValue();
+            while (true) {
+                var op = input.getOperator();
+                if (op === 'q') {
+                    break;
+                }
+                var num = input.getSecondValue();
+                var result = calculator.calculate(result, num, op);
+            }
+            output.print(result);
+
+        };
+
+        main();
+
+    </script>
+</body>
+
+</html>
