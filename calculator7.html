@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+
+    <div>
+        <input type="text" id="input"><br>
+        <button onClick ="calc()"> 확인</button>
+
+    </div>
+    <div id="output"> 결과가 여기에 나옵니다.</div>
+    <script>
+
+        var input = {};
+
+
+        input.init = function(str){
+         this.list  = str.split(" ");
+
+        };
+
+
+        input.empty = function(){
+            if(this.list.length == 0){
+                return true;
+            }
+        };
+
+        input.getValue = function () {
+            var str = this.list.shift();
+            var n1 = Number(str);
+            return n1;
+        };
+        
+        input.getOperator = function () {
+           
+            var op = this.list.shift();
+            if (op === "+" || op === "-" || op === "*" || op === "/" || op === "q") {
+                return op;
+            } else {
+                  return "$";
+            }
+            
+        };
+
+
+        output = {};
+        output.print = function (result) {
+            var out = document.getElementById('output');
+            out.innerHTML = "최종결과값은 " + result + "입니다."
+
+        };;
+
+        calculator = {}
+        calculator.calculate = function (result, n2, op) {
+            if (op === "+") {
+                result += n2;
+
+            } else if (op === "-") {
+                result -= n2;
+
+            } else if (op === "*") {
+                result *= n2;
+
+            } else if (op === "/") {
+                result /= n2;
+
+            }
+
+            return result;
+        };
+
+        function calc(){
+            console.log("calc 실행");
+            var allStr = document.getElementById('input');
+            input.init(allStr.value);
+            var result = input.getValue();
+            while(!input.empty()){
+                var op = input.getOperator();
+                var second = input.getValue();
+                result = calculator.calculate(result, second,op);
+            }
+            output.print(result);
+
+        };
+
+    </script>
+</body>
+
+</html>
